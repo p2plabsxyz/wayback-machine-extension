@@ -1,0 +1,39 @@
+name: Build/release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+  workflow_dispatch:
+
+jobs:
+  release:
+    continue-on-error: false
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Package Chromium extension
+        run: zip -r wayback-machine-${{ github.ref_name }}.zip webextension/
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "wayback-machine-${{ github.ref_name }}.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: true
+          allowUpdates: true
