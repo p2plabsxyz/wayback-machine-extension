@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Package Chromium extension
-        run: zip -r wayback-machine-${{ github.ref_name }}.zip webextension/
+        run: cd webextension && zip -r ../wayback-machine-${{ github.ref_name }}.zip .
 
       - name: Upload Release
         uses: ncipollo/release-action@v1.12.0
