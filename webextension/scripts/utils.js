@@ -806,19 +806,19 @@ function setupContextMenus(enabled) {
   })
 }
 
-// Default Settings prior to accepting terms.
+// Default Settings - terms pre-accepted for Peersky Browser.
 function initDefaultOptions () {
   chrome.storage.session.set({
     waybackCountCache: {}
   });
   chrome.storage.local.set({
-    agreement: false, // needed for firefox
+    agreement: true,
     spn_outlinks: false,
     spn_screenshot: false,
     selectedFeature: null,
     /* Features */
-    private_mode_setting: true,
-    not_found_setting: false,
+    private_mode_setting: false,
+    not_found_setting: true,
     embed_popup_setting: false,
     wm_count_setting: false,
     wiki_setting: false,
