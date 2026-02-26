@@ -16,6 +16,7 @@
     "1024": "images/app-icon/app-icon1024.png"
   },
   "action": {
+    "default_popup": "index.html",
     "default_icon": {
       "16": "images/toolbar/toolbar-icon-archive16.png",
       "24": "images/toolbar/toolbar-icon-archive24.png",
