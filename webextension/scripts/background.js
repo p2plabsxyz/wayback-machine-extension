@@ -557,7 +557,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       let page_url = getCleanUrl(message.page_url)
       let silent = message.silent || false
       let options = message.options || {}
-      savePageNow(message.atab, page_url, silent, options, false)
+      savePageNowChecked(message.atab, page_url, silent, options)
     }
     return true
   }
